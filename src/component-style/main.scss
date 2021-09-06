@@ -1,6 +1,6 @@
 @use "global" as global;
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,6 +16,13 @@ body {
 
 .prim__color {
   color: global.$primary-color;
+}
+.sec__color {
+  color: global.$secondary-color;
+}
+
+.gray__bg {
+  background-color: global.$gray_light;
 }
 .prim__bg {
   background-color: global.$primary-color;
@@ -85,4 +92,7 @@ body {
 }
 .let__spacing {
   letter-spacing: global.$spacing-1;
+}
+.sec__font {
+  font-family: global.$secondary-font;
 }

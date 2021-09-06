@@ -8,6 +8,7 @@
   text-decoration: none;
 }
 
+// PRIMARY A LINK
 @mixin primary__a-link {
   @include a_link($color: $white);
   background-color: $primary-color;
@@ -16,10 +17,11 @@
   padding: $spacing-2 $spacing-5;
 
   &:hover {
-    filter: brightness(.8);
+    filter: brightness(0.8);
   }
 }
 
+// PICTURE POSITION
 @mixin asset_position($top: 0, $right: 0, $bottom: 0, $left: 0) {
   top: $top;
   right: $right;
@@ -27,8 +29,17 @@
   left: $left;
 }
 
+// LEARN MORE LINK
+@mixin secondary__a-link {
+  @include a_link($color: $primary-color, $weight: $fw_500);
+  background-color: $secondary-color;
+}
+
 $primary-font: "Barlow", sans-serif;
+$secondary-font: 'Averia Serif Libre', cursive;
 $primary-color: #5563f2;
+$secondary-color: #fedefb;
+$gray_light: #F4F4F4;
 $black: #000;
 $white: #fff;
 $fw_900: 900;
