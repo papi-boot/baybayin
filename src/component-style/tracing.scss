@@ -1,0 +1,108 @@
+#text-wrapper {
+	width: 100%;
+	height: 100px;
+	background: #2D3E50;
+}
+
+#output {
+	width: 86%;
+	height: 65px;
+	font-family: 'Baybayin Unicode Mono';
+	font-size: 40px;
+	background: #2D3E50;
+	color: white;
+	letter-spacing: 6.3px;
+	float: left;
+	border: none;
+	text-align: left;
+	padding: 0 2%;
+}
+::placeholder {
+	color: #ddd;
+	letter-spacing: 0;
+	font-size: smaller;
+	
+}
+#clear-canvas {
+	width: 10%;
+	height: 100%;
+	float: right;
+	background: #999;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+}
+@media (max-width: 600px) {
+	#clear-canvas span {
+		transform: rotate(90deg);
+		display: inline-block;
+	}
+}
+#clear-canvas:hover {
+	background: red;
+}
+#input-wrapper {
+	width: 90%;
+	height: 28px;
+	clear: left;
+	float: left;
+	overflow-y: hidden;
+}
+#input-wrapper canvas, #input-wrapper img {
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+}
+#input-wrapper img:first-child {
+	width: 14px;
+}
+#canvas-wrapper {
+	display: flex;
+	background:rgb(227, 227, 227);
+}
+
+.pattern_image{
+	padding: 2rem 8rem;
+	
+}
+
+
+#handwriting {
+	cursor: crosshair;
+	width: 90%;
+	height: 100%;
+
+
+	
+}
+
+#drawing-mode {
+  margin-bottom: 10px;
+}
+
+label {
+  display: inline-block; width: 130px;
+}
+.info {
+  display: inline-block;
+  width: 25px;
+  background: #ffc;
+  display: none;
+}
+
+h1{
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	margin-top: 20px;
+}
+
+textarea{
+  position: absolute;
+  width: 485px;
+  height: 41px;
+  left: 385px;
+  top: 1217px;
+  
+  background: #FFFFFF;
+  border: 1px solid #9E9E9E;
+  box-sizing: border-box;
+}

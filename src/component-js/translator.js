@@ -1,26 +1,28 @@
-var $;
-
-$ = require('jquery');
-
-$('#userInput').on('keyup', function(){
-  
-  var text = ""
-  var answer = document.getElementById("userInput").value;
-  switch(answer){
-  case "A":
-    text = "NoteA";
-    break;
-  case "B":
-    text = "NoteB";
-    break;
-  case "C":
-    text = "NoteC";
-    break;
-
-  default:
-    text = "I have never heard of that note";
-}
-
-document.getElementById("baybayinOutput").innerHTML = text;
-
-});
+const baybayinInputChecker = document.querySelector(".baybayinInputChecker");
+const baybayinOutput = document.querySelector(".baybayinOutput");
+baybayinInputChecker.addEventListener("input", (e) => {
+  if (e.target.value !== null) {
+    let item = [
+      { value: "a", key: "A"  },
+      { value: "ba", key: "B" },
+      { value: "ka", key: "C" },
+      { value: "da", key: "C" },
+      { value: "ga", key: "C" },
+      { value: "ha", key: "C" },
+      { value: "la", key: "C" },
+      { value: "ma", key: "C" },
+      { value: "a", key: "C" },
+      { value: "Cat", key: "C" },
+      { value: "Cat", key: "C" },
+      { value: "Cat", key: "C" },
+      { value: "Cat", key: "C" },
+      { value: "Cat", key: "C" },
+    ]
+    item.forEach(value => {
+      if(e.target.value === value.key || e.target.value === value.key.toLowerCase()){
+        baybayinOutput.innerHTML = value.value;
+      }
+    });
+  }
+ 
+})
