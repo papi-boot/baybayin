@@ -2,41 +2,60 @@
  * class Model
  * Loads the Tensorflow model and preprocesses and predicts images
  */
-
+// import modelJSON from "./modelJSON";
 class Model {
   /**
    * Initializes the Model class, loads and warms up the model, etc
    */
   constructor() {
-
-
-    this.characters = ["a", 'ba', 'dara', 'ei', 'ga', 'ha', 'ka', 'la',
-      'la', 'na', 'nga', 'ou', 'pa', 'sa', 'ta', 'wa', 'ya'];
-    this.inputCanvas = document.getElementById("input-canvas")
+    this.characters = [
+      "a",
+      "ba",
+      "dara",
+      "ei",
+      "ga",
+      "ha",
+      "ka",
+      "la",
+      "la",
+      "na",
+      "nga",
+      "ou",
+      "pa",
+      "sa",
+      "ta",
+      "wa",
+      "ya",
+    ];
+    this.inputCanvas = document.getElementById("#input-canvas");
     this.isWarmedUp = this.loadModel()
       .then(this.warmUp.bind(this))
-      .then(() => console.info("Backend running on:", tf.getBackend()))
+      .then(() => console.info("Backend running on:", tf.getBackend()));
   }
 
   /**
    * Loads the model
    */
   loadModel() {
-    console.time("Load model")
-    return tf.loadLayersModel("./model/model.json").then(model => {
+    console.time("Load model");
+    console.log("LOAD MODEL");
+    return tf.loadLayersModel("./model.json").then((model) => {
       this._model = model;
-      console.timeEnd("Load model")
-    })
+      console.timeEnd("Load model");
+    });
   }
 
   /**
    * Runs a prediction with random data to warm up the GPU
    */
   warmUp() {
-    console.time("Warmup")
-    this._model.predict(tf.randomNormal([1, 28, 28, 1])).as1D().dataSync()
+    console.time("Warmup");
+    this._model
+      .predict(tf.randomNormal([1, 28, 28, 1]))
+      .as1D()
+      .dataSync();
     this.isWarmedUp = true;
-    console.timeEnd("Warmup")
+    console.timeEnd("Warmup");
   }
 
   /**
@@ -44,13 +63,26 @@ class Model {
    * @param {ImageData} pixelData
    */
   preprocessImage(pixelData) {
-
     const targetDim = 28,
       edgeSize = 4,
       resizeDim = targetDim - edgeSize * 2,
       padVertically = pixelData.width > pixelData.height,
-      padSize = Math.round((Math.max(pixelData.width, pixelData.height) - Math.min(pixelData.width, pixelData.height)) / 2),
-      padSquare = padVertically ? [[padSize, padSize], [0, 0], [0, 0]] : [[0, 0], [padSize, padSize], [0, 0]];
+      padSize = Math.round(
+        (Math.max(pixelData.width, pixelData.height) -
+          Math.min(pixelData.width, pixelData.height)) /
+          2
+      ),
+      padSquare = padVertically
+        ? [
+            [padSize, padSize],
+            [0, 0],
+            [0, 0],
+          ]
+        : [
+            [0, 0],
+            [padSize, padSize],
+            [0, 0],
+          ];
 
     let tempImg = null;
 
@@ -60,25 +92,34 @@ class Model {
     return tf.tidy(() => {
       // convert the pixel data into a tensor with 1 data channel per pixel
       // i.e. from [h, w, 4] to [h, w, 1]
-      let tensor = tf.browser.fromPixels(pixelData, 1)
+      let tensor = tf.browser
+        .fromPixels(pixelData, 1)
         // pad it such that w = h = max(w, h)
-        .pad(padSquare, 255.0)
+        .pad(padSquare, 255.0);
 
       // scale it down
-      tensor = tf.image.resizeBilinear(tensor, [resizeDim, resizeDim])
+      tensor = tf.image
+        .resizeBilinear(tensor, [resizeDim, resizeDim])
         // pad it with blank pixels along the edges (to better match the training data)
-        .pad([[edgeSize, edgeSize], [edgeSize, edgeSize], [0, 0]], 255.0)
+        .pad(
+          [
+            [edgeSize, edgeSize],
+            [edgeSize, edgeSize],
+            [0, 0],
+          ],
+          255.0
+        );
 
       // invert and normalize to match training data
-      tensor = tf.scalar(1.0).sub(tensor.toFloat().div(tf.scalar(255.0)))
+      tensor = tf.scalar(1.0).sub(tensor.toFloat().div(tf.scalar(255.0)));
 
       // display what the model will see (keeping the tensor outside the tf.tidy scope is necessary)
-      tempImg = tf.keep(tf.clone(tensor))
-      this.showInput(tempImg)
+      tempImg = tf.keep(tf.clone(tensor));
+      this.showInput(tempImg);
 
       // Reshape again to fit training model [N, 28, 28, 1]
       // where N = 1 in this case
-      return tensor.expandDims(0)
+      return tensor.expandDims(0);
     });
   }
 
@@ -88,9 +129,8 @@ class Model {
    * @returns {string} character
    */
   predict(pixelData) {
-
     if (!this._model) return console.warn("Model not loaded yet!");
-    console.time("Prediction")
+    console.time("Prediction");
     let tensor = this.preprocessImage(pixelData),
       prediction = this._model.predict(tensor).as1D(),
       // get the index of the most probable character
@@ -99,18 +139,21 @@ class Model {
       // get the character at that index
       character = this.characters[argMax];
 
-    console.log("Predicted", character, "Probability", probability)
-    console.timeEnd("Prediction")
-    return [character, probability]
+    console.log("Predicted", character, "Probability", probability);
+    console.timeEnd("Prediction");
+    return [character, probability];
   }
 
   /**
    * Helper function to clean previously predicted images
    */
   clearInput() {
-
-    [...this.inputCanvas.parentElement.getElementsByTagName("img")].map(el => el.remove())
-    this.inputCanvas.getContext('2d').clearRect(0, 0, this.inputCanvas.width, this.inputCanvas.height)
+    [...this.inputCanvas.parentElement.getElementsByTagName("img")].map((el) =>
+      el.remove()
+    );
+    this.inputCanvas
+      .getContext("2d")
+      .clearRect(0, 0, this.inputCanvas.width, this.inputCanvas.height);
   }
 
   /**
@@ -119,12 +162,11 @@ class Model {
    * @param {tensor} tempImg
    */
   showInput(tempImg) {
+    let legacyImg = new Image();
+    legacyImg.src = this.inputCanvas.toDataURL("image/png");
+    this.inputCanvas.parentElement.insertBefore(legacyImg, this.inputCanvas);
 
-    let legacyImg = new Image
-    legacyImg.src = this.inputCanvas.toDataURL("image/png")
-    this.inputCanvas.parentElement.insertBefore(legacyImg, this.inputCanvas)
-
-    tf.browser.toPixels(tempImg, this.inputCanvas)
+    tf.browser.toPixels(tempImg, this.inputCanvas);
   }
 
   /**
@@ -135,11 +177,17 @@ class Model {
    * @param {int} height
    */
   static log(name, tensor, width = 28, height = 28) {
-
-    tensor = tensor.dataSync()
-    console.log("Tensor name", name, tensor)
+    tensor = tensor.dataSync();
+    console.log("Tensor name", name, tensor);
     for (let i = 0; i < width * height; i += width) {
-      console.log(tensor.slice(i, i + width).reduce((acc, cur) => acc + ((cur === 0 ? "0" : "1") + "").padStart(2)), "")
+      console.log(
+        tensor
+          .slice(i, i + width)
+          .reduce(
+            (acc, cur) => acc + ((cur === 0 ? "0" : "1") + "").padStart(2)
+          ),
+        ""
+      );
     }
   }
 }

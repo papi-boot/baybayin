@@ -6,7 +6,7 @@
   "scripts": {
     "webpack:dev": "webpack -w --mode development",
     "webpack:prod": "webpack -w --mode production",
-    "dev": "http-server ./src/"
+    "dev": "http-server ."
   },
   "keywords": [
     "Baybayin"
