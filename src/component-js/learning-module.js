@@ -3,11 +3,11 @@ window.addEventListener("DOMContentLoaded", () => {
   const baybayinIntroImages = doc_query_all(".baybayin__def-image");
   const baybayinCultureAsset = doc_query(".baybayin__culture-asset");
   for (let i = 0; i < baybayinIntroImages.length; i++) {
-    baybayinIntroImages[i].src = `../src/assets/learning-module/baybayin-def-${
+    baybayinIntroImages[i].src = `./assets/learning-module/baybayin-def-${
       i + 1
     }.jpg`;
   }
   if (baybayinCultureAsset !== null) {
-    baybayinCultureAsset.src = "../src/assets/learning-module/culture_asset.jpg";
+    baybayinCultureAsset.src = "./assets/learning-module/culture_asset.jpg";
   }
 });

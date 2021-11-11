@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap");
 * {
   box-sizing: border-box;
+  font-family: global.$primary-font !important;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +12,6 @@ html {
 }
 
 body {
-  font-family: global.$primary-font;
 }
 
 .prim__color {

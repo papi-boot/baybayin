@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Banner 1 images
   for (let i = 0; i < handGestures.length; i++) {
-    handGestures[i].src = `../src/assets/landing-page/banner-1/hand_gest-${
+    handGestures[i].src = `./assets/landing-page/banner-1/hand_gest-${
       i + 1
     }.svg`;
     handGestures[i].classList.add("z-index-1");
@@ -18,18 +18,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Banner 2
   for (let i = 0; i < bannerTwoImage.length; i++) {
-    bannerTwoImage[i].src = `../src/assets/landing-page/banner-2/icon${i + 1}.svg`;
+    bannerTwoImage[i].src = `./assets/landing-page/banner-2/icon${i + 1}.svg`;
   }
 
   //Banner 3
   for (let i = 0; i < cardLinkIcon.length; i++) {
-    cardLinkIcon[i].src = `../src/assets/landing-page/banner-3/card-link-icon-${
+    cardLinkIcon[i].src = `./assets/landing-page/banner-3/card-link-icon-${
       i + 1
     }.svg`;
   }
 
-  baybayinLogo.src = "../src/assets/logo/logo.png";
+  baybayinLogo.src = "./assets/logo/logo.png";
   if (circleVector !== null) {
-    circleVector.src = "../src/assets/landing-page/banner-1/Ellipse_1.svg";
+    circleVector.src = "./assets/landing-page/banner-1/Ellipse_1.svg";
   }
 });

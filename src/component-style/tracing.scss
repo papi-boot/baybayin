@@ -42,16 +42,16 @@
 	background: red;
 }
 #input-wrapper {
+	align-items: center;
+	display: flex;
 	width: 90%;
 	height: 28px;
-	clear: left;
-	float: left;
-	overflow-y: hidden;
 }
 #input-wrapper canvas, #input-wrapper img {
 	display: inline-block;
-	width: 28px;
 	height: 28px;
+	margin: 0 .5rem;
+	width: 28px;
 }
 #input-wrapper img:first-child {
 	width: 14px;
