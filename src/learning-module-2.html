@@ -15,6 +15,35 @@
 
   <body>
     <!-- header nav -->
+    <div class="modal fade" id="contactForm" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+      data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+              <label for="emailInput">Email&nbsp;Address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="subjectInput" placeholder="Your subject message">
+              <label for="subjectInput">Subject</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                style="height: 100px;"></textarea>
+              <label for="floatingTextarea" style="white-space: nowrap;">Leave a message</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-success" data-bs-dismiss="modal">Submit Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <header class="my-5">
         <nav class="__navbar">
@@ -32,7 +61,7 @@
                   <a class="nav__link" href="#">About</a>
                 </li>
                 <li class="nav__items">
-                  <a class="nav__link" href="#">Contact</a>
+                  <a class="nav__link" role="button" href="#" data-bs-toggle="modal" data-bs-target="#contactForm">Contact</a>
                 </li>
               </ul>
             </div>

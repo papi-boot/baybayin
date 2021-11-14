@@ -14,6 +14,36 @@
   </head>
 
   <body>
+    <!-- Modal -->
+    <div class="modal fade" id="contactForm" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+      data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+              <label for="emailInput">Email&nbsp;Address</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="subjectInput" placeholder="Your subject message">
+              <label for="subjectInput">Subject</label>
+            </div>
+            <div class="form-floating mb-3">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                style="height: 100px;"></textarea>
+              <label for="floatingTextarea" style="white-space: nowrap;">Leave a message</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-success" data-bs-dismiss="modal">Submit Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- header nav -->
     <div class="container">
       <header class="my-5">
@@ -32,7 +62,8 @@
                   <a class="nav__link" href="#">About</a>
                 </li>
                 <li class="nav__items">
-                  <a class="nav__link" href="#">Contact</a>
+                  <a class="nav__link" role="button" href="#" data-bs-toggle="modal"
+                    data-bs-target="#contactForm">Contact</a>
                 </li>
               </ul>
             </div>
@@ -80,10 +111,12 @@
         <section class="who__we-are w-100">
           <h1 class="prim__color fw_700 text-lg-end">Who<span class="fw_900 d-block display-4">We Are</span></h1>
           <p class="fw_600 my-4 let__spacing text-lg-end">
-            We, <span class="fw_700">John Royce Evangelista</span>, <span class="fw_700">Liezel <br> Malaborbor</span>,
+            We, <span class="fw_700">John Royce Evangelista</span>, <span class="fw_700">Liezel <br>
+              Malaborbor</span>,
             <span class="fw_700">and Chantal Pandiño,</span> are <br> Bachelor of Science in Computer Science <br>
             students at Laguna State Polytechnic <br> University's San Pablo City Campus. We are <br> currently
-            completing an undergraduate thesis titled "The Development of the <br> "BaybayAtin E-learning Website" Using
+            completing an undergraduate thesis titled "The Development of the <br> "BaybayAtin E-learning Website"
+            Using
             <br> Pattern Recognition."
           </p>
         </section>
@@ -94,7 +127,8 @@
           <h1 class="prim__color fw_700">Our <span class="fw_900 d-block display-4">Goal</span></h1>
           <p class="fw_600 my-4 let__spacing">To provide more information about <br> Baybayin to students and anybody
             else
-            who <br> is interested, to be able to research in a more convenient and accessible manner <br> and to create
+            who <br> is interested, to be able to research in a more convenient and accessible manner <br> and to
+            create
             a <br>
             well-informed website that <br> can aid in the understanding, learning, <br> reading, and writing of
             Baybayin
