@@ -75,10 +75,10 @@
 
     <div class="container-fluid mb-3">
       <div class="row g-3">
-        <div class="col-sm-7  ">
+        <div class="col-sm-7 " style="background-Color:black;">
           <div id="text-wrapper">
             <div></div>
-            <input type="text" id="output" placeholder="Loading app..." />
+            <input type="text" id="output" class="form-control readonly" placeholder="Loading app..." />
             <button id="clear-canvas"><span>CLEAR</span></button>
           </div>
           <div id="input-wrapper">
@@ -91,12 +91,14 @@
 
           <div id="drawing-mode-options " class=" mx-auto my-5" style="width: 200px; ">
 
-            <span class="info">30</span><input type="range" value="30" min="5" max="100" id="drawing-line-width">
+            <span class="info"></span><input type="range" value="30" min="5" max="100" id="drawing-line-width">
+            <p class="d-flex justify-content-center" id="probability" style="color: aliceblue;"> </p>
+            
           </div>
         </div>
 
 
-        <div id="myCarousel" class="carousel slide col-sm-5" data-ride="carousel" data-bs-interval="false">
+        <div id="myCarousel" class="carousel slide col-sm-5" data-ride="carousel" data-bs-interval="false" >
           <!-- Carousel indicators -->
           <!-- <ol class="carousel-indicators">
             <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>

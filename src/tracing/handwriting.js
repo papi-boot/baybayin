@@ -15,7 +15,7 @@ class Handwriting {
       backgroundColor: "#fff",
       isDrawingMode: true,
     });
-    this.canvas.freeDrawingBrush.color = "#2D3E50";
+    this.canvas.freeDrawingBrush.color = "black";
     this.resetCanvas(true);
     this.resizeCanvas();
 
@@ -42,7 +42,7 @@ class Handwriting {
    */
   resizeCanvas() {
     this.canvas.setDimensions({
-      width: 800,
+      width: 1089,
       height: 600,
     });
     this.canvas.calcOffset();
