@@ -1,5 +1,6 @@
 @use "global" as global;
 
+
 .heading__logo {
   margin: 1.2rem global.$spacing-2 0;
 }
@@ -23,8 +24,8 @@
     padding: global.$spacing-2 global.$spacing-5;
 
     &:hover{
-      background: global.$black;
-      color: global.$white;
+      transition: all .4s;
+      color: global.$primary-color;
     }
   }
 }

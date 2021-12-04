@@ -1,13 +1,12 @@
 const path = require("path");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
-  target: "web",
   devtool: "inline-source-map",
   entry: path.join(__dirname, "src", "index.js"),
   module: {
     rules: [
       {
-        test: /\.(js)$/i,
+        test: /\.(js|json)$/i,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -33,11 +32,11 @@ module.exports = {
   devServer: {
     port: 3030,
     contentBase: path.join(__dirname, "src", "dist"),
-    watchContentBase: true
+    watchContentBase: true,
   },
   plugins: [new MiniCSSExtractPlugin({ filename: "style.css" })],
   output: {
     path: path.join(__dirname, "src", "dist"),
-    filename: "index.bundle.js"
-  }
+    filename: "index.bundle.js",
+  },
 };

@@ -1,0 +1,14 @@
+.floating-img {
+  animation: animateFloat infinite 2s alternate ease-in;
+}
+
+@keyframes animateFloat {
+
+  from {
+    transform: translateY(-10rem);
+  }
+  to {
+    transform: translateY(5rem);
+  }
+
+}

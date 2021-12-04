@@ -1,8 +1,10 @@
 @use "global" as global;
-@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Averia+Serif+Libre&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: global.$primary-font !important;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +13,6 @@ html {
 }
 
 body {
-  font-family: global.$primary-font;
 }
 
 .prim__color {
@@ -95,4 +96,9 @@ body {
 }
 .sec__font {
   font-family: global.$secondary-font;
+}
+
+.primary-color-alpha {
+  background-color: global.$primary-color;
+  border-radius: 50px;
 }

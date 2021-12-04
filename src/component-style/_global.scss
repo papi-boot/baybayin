@@ -12,12 +12,13 @@
 @mixin primary__a-link {
   @include a_link($color: $white);
   background-color: $primary-color;
-  border-radius: 10px;
+  border-radius: 100px;
   font-weight: $fw_600;
-  padding: $spacing-2 $spacing-5;
+  padding:$spacing-3 $spacing-7;
 
   &:hover {
-    filter: brightness(0.8);
+    background-color: $primary-color-alpha;
+    transition: all .4s;
   }
 }
 
@@ -35,9 +36,13 @@
   background-color: $secondary-color;
 }
 
-$primary-font: "Barlow", sans-serif;
+
+
+
+$primary-font: "Poppins", sans-serif;
 $secondary-font: 'Averia Serif Libre', cursive;
 $primary-color: #5563f2;
+$primary-color-alpha: #2934aaea;
 $secondary-color: #fedefb;
 $gray_light: #F4F4F4;
 $black: #000;
@@ -56,6 +61,8 @@ $spacing-2: 0.4rem;
 $spacing-3: 0.6rem;
 $spacing-4: 0.8rem;
 $spacing-5: 1rem;
+$spacing-6: 2rem;
+$spacing-7: 3rem;
 $f_size-1: $spacing-1;
 $f_size-2: $spacing-2;
 $f_size-3: $spacing-3;

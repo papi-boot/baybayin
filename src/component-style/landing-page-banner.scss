@@ -5,6 +5,7 @@
   padding: 0 global.$spacing-5 * 6;
 }
 
+
 .practice__try-it {
   position: relative;
   > .circle__vector {
@@ -12,6 +13,7 @@
     position: absolute;
   }
   > .try__it-now {
+    padding: global.$spacing-5;
     @include global.primary__a-link;
   }
 }
